@@ -126,7 +126,7 @@ button {
 <script>
 let clave = prompt("Ingresa nuestra fecha especial ❤️");
 
-if(clave !== "0112") {  // CAMBIA ESTA CLAVE
+if(clave !== "0112") {  
     document.body.innerHTML = "<h1 style='color:white'>Acceso denegado 💔</h1>";
 }
 </script>
@@ -208,5 +208,50 @@ porque entendí que necesito ser una mejor versión de mí,
 contigo o sin ti.
 
 Pero la verdad es que mi deseo es poder construir algo
-más sano, más consciente y más fuerte a tu
+más sano, más consciente y más fuerte a tu lado.
 
+No te escribo para presionarte, ni para exigirte una respuesta.
+Solo quería recordarte que te amo, que te respeto,
+y que estoy trabajando en mí de verdad.
+
+Gracias por todo lo que hemos vivido.
+Siempre voy a valorar lo que significas para mí.
+
+`;
+
+function escribirCarta() {
+    const contenedor = document.getElementById("textoCarta");
+    let i = 0;
+
+    function escribir() {
+        if (i < cartaTexto.length) {
+            contenedor.innerHTML += cartaTexto.charAt(i);
+            i++;
+            setTimeout(escribir, 35);
+        } else {
+            document.getElementById("fraseFinal").style.display = "block";
+        }
+    }
+
+    escribir();
+}
+
+function crearCorazon() {
+    const corazon = document.createElement("div");
+    corazon.classList.add("corazon");
+    corazon.innerHTML = "❤️";
+    corazon.style.left = Math.random() * 100 + "vw";
+    corazon.style.fontSize = Math.random() * 20 + 10 + "px";
+    corazon.style.animationDuration = Math.random() * 3 + 4 + "s";
+    fondo.appendChild(corazon);
+
+    setTimeout(() => {
+        corazon.remove();
+    }, 7000);
+}
+
+setInterval(crearCorazon, 400);
+</script>
+
+</body>
+</html>
