@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>Para Ti ❤️</title>
+
+<style>
+body {
+    margin: 0;
+    height: 100vh;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    font-family: 'Segoe UI', sans-serif;
+    background: linear-gradient(135deg, #ff758c, #ff7eb3);
+    text-align: center;
+}
+
+<script>
+let clave = prompt("Ingresa nuestra fecha especial ❤️");
+
+if(clave !== "0112") { 
+    document.body.innerHTML = "<h1>Acceso denegado 💔</h1>";
+}
+</script>
+
+/* Corazones flotando */
+.corazon {
+    position: fixed;
+    bottom: -10px;
+    font-size: 20px;
+    animation: flotar 5s linear infinite;
+    color: red;
+}
+
+@keyframes flotar {
+    0% { transform: translateY(0); opacity: 1; }
+    100% { transform: translateY(-100vh); opacity: 0; }
+}
+
+h1 {
+    color: white;
+    font-size: 2.5rem;
+}
+
+.botones {
+    margin-top: 20px;
+    position: relative;
+}
+
+button {
+    padding: 15px 30px;
+    font-size: 18px;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+#si {
+    background-color: #ff2e63;
+    color: white;
+}
+
+#no {
+    background-color: #333;
+    color: white;
+    position: absolute;
+    left: 150px;
+}
+
+/* Carta animada */
+#mensajeFinal {
+    display: none;
+    max-width: 600px;
+    background: white;
+    padding: 30px;
+    border-radius: 20px;
+    box-shadow: 0 15px 40px rgba(0,0,0,0.4);
+    margin-top: 20px;
+    animation: aparecer 1s ease forwards;
+}
+
+@keyframes aparecer {
+    from { opacity: 0; transform: scale(0.5); }
+    to { opacity: 1; transform: scale(1); }
+}
+</style>
+</head>
+
+<body>
+
+<!-- Música -->
+<iframe width="0" height="0" 
+src="https://www.youtube.com/embed/9M0z0RaGk_4?autoplay=1&loop=1&playlist=9M0z0RaGk_4" 
+frameborder="0" allow="autoplay"></iframe>
+
+<h1 id="pregunta">¿ Quieres ser mi San Valentín, Johana ? 💖</h1>
+
+<div class="botones">
+    <button id="si">Sí ❤️</button>
+    <button id="no">No 💔</button>
+</div>
+
+<div id="mensajeFinal">
+    <h2>Feliz San Valentín ❤️</h2>
+    <p>
+    Hoy es San Valentín, y aunque estamos tomando distancia, no podía dejar pasar el día sin decirte algo que nace desde lo más profundo de mí.
+
+
+    He estado reflexionando mucho. Entendí que mis actitudes te hicieron daño y que en varios momentos no te di el cuidado y la atención que merecías. No quiero justificarme, quiero asumirlo. Me duele saber que te fallé.
+
+
+    Este tiempo me ha servido para mirarme con honestidad. No quiero cambiar solo para recuperarte, quiero cambiar porque entendí que necesito ser una mejor versión de mí, contigo o sin ti. Pero la verdad es que mi deseo es poder construir algo más sano, más consciente y más fuerte a tu lado.
+
+
+    No te escribo para presionarte, ni para exigirte una respuesta. Solo quería recordarte que te amo, que te respeto, y que estoy trabajando en mí de verdad.
+
+
+    Gracias por todo lo que hemos vivido. Siempre voy a valorar lo que significas para mí.
+    </p>
+</div>
+
+<script>
+const botonNo = document.getElementById("no");
+const botonSi = document.getElementById("si");
+const mensajeFinal = document.getElementById("mensajeFinal");
+
+let tamañoSi = 1;
+
+botonNo.addEventListener("mouseover", function() {
+    let x = Math.random() * (window.innerWidth - 100);
+    let y = Math.random() * (window.innerHeight - 50);
+
+    botonNo.style.position = "absolute";
+    botonNo.style.left = x + "px";
+    botonNo.style.top = y + "px";
+
+    tamañoSi += 0.15;
+    botonSi.style.transform = "scale(" + tamañoSi + ")";
+});
+
+botonSi.addEventListener("click", function() {
+    document.getElementById("pregunta").style.display = "none";
+    document.querySelector(".botones").style.display = "none";
+    mensajeFinal.style.display = "block";
+});
+
+/* Generar corazones */
+function crearCorazon() {
+    const corazon = document.createElement("div");
+    corazon.classList.add("corazon");
+    corazon.innerHTML = "❤️";
+    corazon.style.left = Math.random() * 100 + "vw";
+    corazon.style.fontSize = Math.random() * 20 + 10 + "px";
+    corazon.style.animationDuration = Math.random() * 3 + 2 + "s";
+    document.body.appendChild(corazon);
+
+    setTimeout(() => {
+        corazon.remove();
+    }, 5000);
+}
+
+setInterval(crearCorazon, 300);
+</script>
+
+</body>
+</html>
